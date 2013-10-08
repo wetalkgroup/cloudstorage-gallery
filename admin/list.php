@@ -38,9 +38,10 @@ $files = $arubaStorage->getBucket($bucketName);
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>My Gallery - Admin</title>
         <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap/3.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css">
+		<link rel="stylesheet" href="../style.css">
 		<script src="//cdn.jsdelivr.net/jquery/2.0.3/jquery-2.0.3.min.js"></script>
-		<script src="//cdn.jsdelivr.net/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     </head>
     <body>
 	
@@ -72,7 +73,8 @@ $files = $arubaStorage->getBucket($bucketName);
 							</a>
 						</td>
 						<td>
-							<a class="btn btn-danger" href="?action=delete&amp;file=<?php echo $encodedPath; ?>">Delete</a>
+							<a class="btn btn-danger" href="?action=delete&amp;file=<?php echo $encodedPath; ?>"><i class="icon-trash icon-white"></i> Delete</a>
+							<a class="btn btn-info" href="<?php echo $path; ?>" target="_blank">Download</a>
 						</td>
 					</tr>
 					<?php endforeach; ?>

@@ -4,7 +4,7 @@ require_once "../utils.php";
 global $config;
 $config = include_once "../conf.php";
 
-
+$msg = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isSet($_FILES['myFile'])){
 	
 	$arubaStorage = getArubaStorage();
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isSet($_FILES['myFile'])){
 	
 	$publicURI = generatePath($URI);
 	
-	echo "<p>File successfully uploaded here: <a href='$publicURI'>$publicURI</a></p>";
+	$msg = "File successfully uploaded here: <a href='$publicURI' target='_blank'>$publicURI</a> <button type='button' class='close' data-dismiss='alert'>&times;</button>";
 	
 }
 ?>
@@ -26,9 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isSet($_FILES['myFile'])){
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>My Gallery - Admin</title>
         <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap/3.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css">
+		<link rel="stylesheet" href="../style.css">
 		<script src="//cdn.jsdelivr.net/jquery/2.0.3/jquery-2.0.3.min.js"></script>
-		<script src="//cdn.jsdelivr.net/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     </head>
     <body>
 	
@@ -36,6 +37,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isSet($_FILES['myFile'])){
 		
 			<h1>Upload a new Image</h1>
 			<br/>
+			
+			<?php if ($msg): ?>
+			<p class="alert alert-success"><?php echo $msg; ?></p>
+			<?php endif; ?>
 	
 			<form action="upload.php" method="post" enctype="multipart/form-data" class="form-horizontal text-center" style="width:250px;margin:20px auto;">
 
@@ -43,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isSet($_FILES['myFile'])){
 				<div class="control-group">
 					<label class="control-label" for="inputEmail">New File:</label>
 					<div class="controls">
-					  <input type="file" name="myFile" placeholder="Upload a new file here!" />
+					  <input type="file" name="myFile" placeholder="Upload a new file here!" required="required" />
 					</div>
 				  </div>
 				

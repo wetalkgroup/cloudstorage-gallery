@@ -20,8 +20,9 @@ $files = $arubaStorage->getBucket($bucketName);
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css">
 		<link rel="stylesheet" href="lib/lightbox/css/lightbox.css">
+		<link rel="stylesheet" href="./style.css">
 		<script src="//cdn.jsdelivr.net/jquery/2.0.3/jquery-2.0.3.min.js"></script>
-		<script src="//cdn.jsdelivr.net/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 		<script src="lib/lightbox/js/lightbox-2.6.min.js"></script>
 		<script type="text/javasctipt">
 		$(function(){
@@ -39,18 +40,18 @@ $files = $arubaStorage->getBucket($bucketName);
 			
 			<?php if(count($files)>0): ?>
 			
-			<ul class="inline unstyles">
-			<?php foreach($files as $file): 
+			<div class="row-fluid text-center thumbnails">
+			<?php foreach($files as $i=>$file): 
 				$path = generatePath($file['name']); 
 			?>
-				<li class="span2">
-					<a href="<?php echo $path; ?>" data-lightbox="my-gallery">
-						<img src="<?php echo $path; ?>" width="100" height="75" />
+				<div class="span3">
+					<a href="<?php echo $path; ?>" data-lightbox="my-gallery" title="<?php echo $i; ?>" >
+						<img class="img-circle img-shadowed" src="<?php echo $path; ?>" title="<?php echo $i; ?>" alt="<?php echo $i; ?>"/>
 					</a>
-				</li>
+				</div>
 				
 			<?php endforeach; ?>
-			</ul>
+			</div>
 			
 			<?php else: ?>
 			
