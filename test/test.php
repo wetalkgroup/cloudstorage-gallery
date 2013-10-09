@@ -3,14 +3,14 @@
 //https://github.com/tpyo/amazon-s3-php-class
 require_once "./S3.php";
 
-$awsAccessKey = "test-hostingtalk";
-$awsSecretKey = "AlexArubaTest";
+$accessKey = "...";
+$secretKey = "...";
 $ap = "r1-it.storage.cloud.it";
-$bucketName = "hostingtalk-foto";
+$bucketName = "...";
 $fileURI = "2013/10/logo-ht.png";
 //http://r1-it.storage.cloud.it/hostingtalk-foto/2013/10/logo-ht.png
 
-$arubaStorage = new S3($awsAccessKey, $awsSecretKey, false, $ap);
+$arubaStorage = new S3($accessKey, $secretKey, false, $ap);
 
 $arubaStorage->setExceptions(true);
 
