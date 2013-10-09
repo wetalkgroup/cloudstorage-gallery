@@ -12,7 +12,12 @@ $fileURI = "2013/10/logo-ht.png";
 
 $arubaStorage = new S3($accessKey, $secretKey, false, $ap);
 
+//Use exceptions instead of warnings
 $arubaStorage->setExceptions(true);
+
+//Enable SSL without validation
+$arubaStorage->setSSL(true, false);
+
 
 try{
 	
