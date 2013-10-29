@@ -10,7 +10,6 @@ $bucketName = $config['bucketName'];
 $files = $arubaStorage->getBucket($bucketName);
 
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,14 +30,10 @@ $files = $arubaStorage->getBucket($bucketName);
 		</script>
     </head>
     <body>
+	<div class="container">
+		<h1>La mia Gallery Cloud!</h1><br/>
 	
-		<div class="container">
-		
-			<h1>My Gallery</h1>
-			<br/>
-	
-			
-			<?php if(count($files)>0): ?>
+		<?php if(count($files)>0): ?>
 			
 			<div class="row-fluid text-center thumbnails">
 			<?php foreach($files as $i=>$file): 
@@ -53,20 +48,15 @@ $files = $arubaStorage->getBucket($bucketName);
 			<?php endforeach; ?>
 			</div>
 			
-			<?php else: ?>
+		<?php else: ?>
 			
-			<h2>No images yet!</h2>
+			<h2>Non ci sono ancora immagini, caricane una...</h2>
 			
-			<?php endif; ?>
+		<?php endif; ?>
 			
 			
-			<a href="admin/list.php" class="btn btn-primary pull-right">Admin</a>
-			
-		</div>
+		<a href="admin/list.php" class="btn btn-primary pull-right">Amministrazione</a>
 		
-		
-		
-	
-	</body>
-	
+	</div>
+    </body>
 </html>
